@@ -23,6 +23,13 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Trant Batey <trant.batey at trantbatey.com>
  */
 public class HomeController {
+    
+    private static String productSearchString;
+    
+    public static void setProductSearchString(String searchString) {
+        productSearchString = searchString;
+        System.out.println("HomeController searchString :" + searchString);
+    }
  
     @Bean
     public DataSource getDataSource() {
@@ -46,7 +53,8 @@ public class HomeController {
 
     public List<Product> listProduct() throws IOException {
         ProductDAO productDAO = getProductDAO();
-        List<Product> productList = productDAO.list();
+        System.out.println("HomeController productSearchString:" + productSearchString);
+        List<Product> productList = productDAO.list(productSearchString);
         return productList;
     }
 

@@ -7,66 +7,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-        <div id="bottom">
-            <table>
-                <tr>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Home</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Teen Driver's Ed</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Adults Permit Course (18 - 25)</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Defensive Driving</a>
-                    </td>
-                </tr>
-               <tr>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Online Course</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Locations</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Information</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Contact Us</a>
-                    </td>
-                </tr>
-               <tr>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            REGISTER</a>
-                    </td>
-                    <td>
-                        <a href="/AustinDrivingSchool" target="_self" 
-                           class="bottom_content" style="color: black">
-                            Admin</a>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr><td>2011 &copy; Austin Driving School</td></tr>
-            </table>
-        </div>
+<div id="top" align="center" style="padding-left: 150px; padding-bottom: 10px">
+    <table>
+        <tr>
+        <p style="font-size: xx-large; margin-top: 10px; margin-bottom: 10px"/>
+        Thank you for shopping with us
+        </tr>
+        <tr>
+        <p style="margin-top: 10px; margin-bottom: 10px"/>
+        <img src="css/hebLogo.jpg" height="75px" alt="HEB"/></td>
+        </tr>
+    </table>
+</a>
+</div>

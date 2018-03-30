@@ -24,6 +24,42 @@ public class ProductDAOImpl implements ProductDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    public static String cleanString(String aString) {
+        if (aString == null) {
+            return null;
+        }
+        String cleanString = "";
+        for (int i = 0; i < aString.length(); ++i) {
+            cleanString += cleanChar(aString.charAt(i));
+        }
+        return cleanString;
+    }
+
+    private static char cleanChar(char aChar) {
+
+        // 0 - 9
+        for (int i = 48; i < 58; ++i) {
+            if (aChar == i) {
+                return (char) i;
+            }
+        }
+
+        // 'A' - 'Z'
+        for (int i = 65; i < 91; ++i) {
+            if (aChar == i) {
+                return (char) i;
+            }
+        }
+
+        // 'a' - 'z'
+        for (int i = 97; i < 123; ++i) {
+            if (aChar == i) {
+                return (char) i;
+            }
+        }
+        return 'a';
+    }
+
     public ProductDAOImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
@@ -55,8 +91,12 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public List<Product> list() {
+    public List<Product> list(String description) {
+        System.out.println("ProductDAOImpl description:" + description);
         String sql = "SELECT * FROM product";
+        if (description != null) {
+            sql += "where description = '" + cleanString(description) + "';";
+        }
         List<Product> listProduct = jdbcTemplate.query(sql, new RowMapper<Product>() {
 
             @Override
