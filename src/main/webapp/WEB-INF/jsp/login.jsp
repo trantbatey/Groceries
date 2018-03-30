@@ -8,7 +8,7 @@
 <head>
 <link href="<c:url value="css/app.css" />" rel="stylesheet"
 	type="text/css">
-<title>Spring Security Example</title>
+<title>Authentication</title>
 </head>
 <body class="security-app">
 	<div class="details">
