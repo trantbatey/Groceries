@@ -5,13 +5,8 @@
     margin-bottom: 5%;
 }
 
-.standardPage {
-    overflow-y: hidden;
-}
-
 body.security-app {
     text-align: center;
-    overflow: hidden;
     background:#edecec;
 }
 
@@ -58,6 +53,11 @@ h2 {
 
 h1{
 	color:crimson;
+}
+
+h3{
+	color:black;
+        font-size: x-large
 }
 
 input[type="text"], input[type="password"]  {

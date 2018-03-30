@@ -21,39 +21,40 @@
               type="text/css">
         <title>GROCERISAURUS</title>
     </head>
-    <body class="standardPage" >
+    <body>
         <jsp:include page="topBanner.jsp" />
-        <h1 align="center">Product List</h1>
-        
-        <div style="overflow-y: scroll; margin-right: 1px; margin-bottom: 75px;">
-            <table border="1" align="center" >
-                <th>Description</th>
-                <th>Last Sold</th>
-                <th>Shelf Life</th>
-                <th>Department</th>
-                <th>Price</th>
-                <th>Unit</th>
-                <th>xFor</th>
-                <th>Cost</th>
-                    <%
-                        HomeController aHomeController = new HomeController();
-                        List productList = aHomeController.listProduct();
-                        Product product;
-                        for (int i = 0; i < productList.size(); i++) {
-                            out.print("<tr>");
-                            product = (Product) productList.get(i);
-                            out.print("<td>" + product.getDescription() + "</td>");
-                            out.print("<td>" + product.getLastSold() + "</td>");
-                            out.print("<td>" + product.getShelfLife() + "</td>");
-                            out.print("<td>" + product.getDepartment() + "</td>");
-                            out.print("<td>" + product.getPrice() + "</td>");
-                            out.print("<td>" + product.getUnit() + "</td>");
-                            out.print("<td>" + product.getxFor() + "</td>");
-                            out.print("<td>" + product.getCost() + "</td>");
-                            out.print("</tr>");
-                        }
-                    %>           
-            </table>
+        <h3 align="center">Product List</h3>
+        <div>
+            <div>
+                <table border="1" align="center" >
+                    <th>Description</th>
+                    <th>Last Sold</th>
+                    <th>Shelf Life</th>
+                    <th>Department</th>
+                    <th>Price</th>
+                    <th>Unit</th>
+                    <th>xFor</th>
+                    <th>Cost</th>
+                        <%
+                            HomeController aHomeController = new HomeController();
+                            List productList = aHomeController.listProduct();
+                            Product product;
+                            for (int i = 0; i < productList.size(); i++) {
+                                out.print("<tr>");
+                                product = (Product) productList.get(i);
+                                out.print("<td>" + product.getDescription() + "</td>");
+                                out.print("<td>" + product.getLastSold() + "</td>");
+                                out.print("<td>" + product.getShelfLife() + "</td>");
+                                out.print("<td>" + product.getDepartment() + "</td>");
+                                out.print("<td>" + product.getPrice() + "</td>");
+                                out.print("<td>" + product.getUnit() + "</td>");
+                                out.print("<td>" + product.getxFor() + "</td>");
+                                out.print("<td>" + product.getCost() + "</td>");
+                                out.print("</tr>");
+                            }
+                        %>           
+                </table>
+            </div>
         </div>
     </body>
 </html>
