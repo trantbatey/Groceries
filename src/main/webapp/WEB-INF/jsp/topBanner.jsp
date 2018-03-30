@@ -10,7 +10,7 @@
         <div id="top" >
                 <table>
                     <tr>
-                        <td><img src="resources/ADSBurro01.png" height="100px" alt="ADSBurro01"/></td>
+                        <td><img src="css/hebLogo.jpg" height="100px" alt="HEB"/></td>
                         <td>
                             <p style="font-size: xx-large; margin-left: 100px; 
                                margin-right: 100px; margin-top: 0px; margin-bottom: 0px"/>
