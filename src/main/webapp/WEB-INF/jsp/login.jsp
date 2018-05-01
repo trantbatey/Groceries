@@ -8,14 +8,11 @@
 <head>
 <link href="<c:url value="css/app.css" />" rel="stylesheet"
 	type="text/css">
-<title>Spring Security Example</title>
+<title>Authentication</title>
 </head>
 <body class="security-app">
 	<div class="details">
-		<h2>Spring Security - JDBC Authentication</h2>
-		<a href="http://www.programming-free.com/2015/09/spring-security-jdbc-authentication.html" class="button green small">Tutorial</a> 
-		<a href="https://github.com/priyadb/SpringSecurityJdbcApp/archive/master.zip"
-			class="button red small">Download</a>
+		<h2>Merchandise Tracking System</h2>
 	</div>
 
 	<form action="/login" method="post">
@@ -42,6 +39,7 @@
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 	</form>
+        <jsp:include page="topBanner.jsp" />
 
 </body>
 </html>

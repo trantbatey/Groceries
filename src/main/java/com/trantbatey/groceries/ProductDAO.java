@@ -20,5 +20,5 @@ public interface ProductDAO {
      
     public Product get(int productId);
      
-    public List<Product> list();
+    public List<Product> list(String description);
 }

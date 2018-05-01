@@ -1,0 +1,41 @@
+
+create database products;
+
+use products;
+
+CREATE TABLE product (
+    productID Int NOT NULL,
+    description varchar(80) NOT NULL,
+    lastSold timestamp,
+    shelfLife Int,
+    department varchar(80),
+    price Float,
+    unit varchar(20),
+    xFor int,
+    cost Float,
+    PRIMARY KEY (productID)
+);
+
+INSERT INTO product VALUES (753542,"banana",'2017-09-05',4,"Produce", 2.99 ,"lb",1, 0.44);
+INSERT INTO product VALUES (321654,"apples",'2017-09-06',7,"Produce", 1.49 ,"lb",1, 0.20);
+INSERT INTO product VALUES (95175,"Strawberry",2017-09-07,3,"Produce", 2.49 ,"lb",1, 0.10);
+INSERT INTO product VALUES (321753,"onion",'2017-09-08',9,"Produce", 1.00 ,"Each",1, 0.05);
+INSERT INTO product VALUES (987654,"Tomato",'2017-09-09',4,"Produce", 2.35 ,"lb",1, 0.20);
+INSERT INTO product VALUES (11122,"grapes",'2017-09-10',7,"Produce", 4.00 ,"lb",1, 1.20);
+INSERT INTO product VALUES (124872,"Lettuce",'2017-09-11',5,"Produce", 0.79 ,"lb",1, 0.10);
+INSERT INTO product VALUES (113,"bread",'2017-09-12',14,"Grocery", 1.50 ,"Each",1, 0.12);
+INSERT INTO product VALUES (1189,"hamburger buns",'2017-09-13',14,"Grocery", 1.75 ,"Each",1, 0.14);
+INSERT INTO product VALUES (12221,"pasta sauce",'2017-09-14',23,"Grocery", 3.75 ,"Each",1, 1.00);
+INSERT INTO product VALUES (1111,"cheese slices",'2017-09-15',20,"Grocery", 2.68 ,"Each",1, 0.40);
+INSERT INTO product VALUES (18939,"sliced turkey",'2017-09-16',20,"Grocery", 3.29 ,"Each",1, 0.67);
+INSERT INTO product VALUES (90879,"tortilla chips",'2017-09-17',45,"Grocery", 1.99 ,"Each",1, 0.14);
+INSERT INTO product VALUES (119290,"cereal",'2017-09-18',40,"Grocery", 3.19 ,"Each",1, 0.19);
+INSERT INTO product VALUES (4629464,"canned vegtables",'2017-09-19',200,"Grocery", 1.89 ,"Each",1, 0.19);
+INSERT INTO product VALUES (9000001,"headache medicine",'2017-09-20',365,"Pharmacy", 4.89 ,"Each",1, 1.90);
+INSERT INTO product VALUES (9000002,"Migraine Medicine",'2017-09-21',365,"Pharmacy", 5.89 ,"Each",1, 1.90);
+INSERT INTO product VALUES (9000003,"Cold and Flu",'2017-09-22',365,"Pharmacy", 3.29 ,"Each",1, 1.90);
+INSERT INTO product VALUES (9000004,"Allegry Medicine",'2017-09-23',365,"Pharmacy", 3.00 ,"Each",1, 1.25);
+INSERT INTO product VALUES (9000005,"Pain",'2017-09-24',365,"Pharmacy", 2.89 ,"Each",1, 1.00);
+
+
+

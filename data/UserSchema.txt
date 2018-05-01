@@ -1,0 +1,34 @@
+CREATE DATABASE userbase;
+
+use userbase;
+
+
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_roles;
+CREATE  TABLE users (
+  userid VARCHAR(5) NOT NULL,
+  username VARCHAR(45) NOT NULL ,
+  password VARCHAR(60) NOT NULL ,
+  enabled TINYINT NOT NULL DEFAULT 1 ,
+  PRIMARY KEY (userid));
+
+CREATE TABLE user_roles (
+  user_role_id int(11) NOT NULL AUTO_INCREMENT,
+  userid varchar(5) NOT NULL,
+  role varchar(45) NOT NULL,
+  PRIMARY KEY (user_role_id),
+  UNIQUE KEY uni_username_role (role,userid),
+  KEY fk_username_idx (userid),
+  CONSTRAINT fk_username FOREIGN KEY (userid) REFERENCES users (userid));
+
+INSERT INTO users(userid,username,password,enabled)
+VALUES ('001','tbatey','$2a$10$jZlrb1UCNtK4.imv1I4qCORZ4gQFNq4C.UQ/l3qUzHdcHmHXBkydy', true); # jungle
+INSERT INTO users(userid,username,password,enabled)
+VALUES ('002','skubrick','$2a$10$d03mnPj.DGMKccTEbX6pZ.tv0109EQJaTxVOUozjKOcrJrK1eoqO6', true); # HAL
+
+INSERT INTO user_roles (userid, role)
+VALUES ('002', 'ROLE_USER');
+INSERT INTO user_roles (userid, role)
+VALUES ('001', 'ROLE_ADMIN');
+INSERT INTO user_roles (userid, role)
+VALUES ('001', 'ROLE_USER');

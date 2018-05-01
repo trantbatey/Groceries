@@ -7,19 +7,25 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-        <div id="top" >
-                <table>
-                    <tr>
-                        <td><img src="css/hebLogo.jpg" height="100px" alt="HEB"/></td>
-                        <td>
-                            <p style="font-size: xx-large; margin-left: 100px; 
-                               margin-right: 100px; margin-top: 0px; margin-bottom: 0px"/>
-                            <h1>GROCERISAURUS</h1>
-                        </td>
-                        <td><img src="resources/ADSBurro02.png" height="100px" alt="ADSBurro02"/></td>
-                    </tr>
-                </table>
-            </a>
-        </div>
+<div id="top" align="center" style="padding-left: 150px; padding-top: 10px">
+    <table>
+        <tr>
+            <td >
+                <p style="margin-right: 50px; 
+                               margin-top: 0px; margin-bottom: 0px"/>
+                <img src="css/hebLogo.jpg" height="75px" alt="HEB"/></td>
+            <td>
+                <p style="font-size: xx-large; margin-left: 50px; 
+                               margin-right: 50px; margin-top: 0px; margin-bottom: 0px"/>
+                <h1>GROCERISAURUS</h1>
+            </td>
+            <td>
+                <p style="margin-left: 50px; 
+                               margin-top: 0px; margin-bottom: 0px"/>
+                <img src="css/hebLogo.jpg" height="75px" alt="HEB"/></td>
+        </tr>
+    </table>
+</a>
+</div>
 
- 
+
