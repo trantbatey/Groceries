@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductSearchController {
     @GetMapping("/productSearch")
     public String searchForm(Model model) {
-        System.out.println("ProductSearchController productSearch.getDescription:");
+        System.out.println("ProductSearchController01 productSearch.getDescription:");
         model.addAttribute("productSearch", new ProductSearch());
         return "productSearch";
     }
 
     @RequestMapping("/productSearch")
     public String searchSubmit(@ModelAttribute ProductSearch productSearch) {
-        System.out.println("ProductSearchController productSearch.getDescription:" + productSearch.getDescription());
+        System.out.println("ProductSearchController02 productSearch.getDescription:" + productSearch.getDescription());
         HomeController.setProductSearchString(productSearch.getDescription());
         return "redirect:/hello";
     }

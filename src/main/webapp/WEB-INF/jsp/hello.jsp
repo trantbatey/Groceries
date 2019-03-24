@@ -25,7 +25,7 @@
         <div class="sidenav">
             <p style="font-size: x-large; color: maroon; padding-left: 10px">Filters</p>
             <div class="search-container">
-                <form action="/logout" method="post" style="width: 150px; padding-left: 10px">
+                <form action="productSearch" method="get" style="width: 150px; padding-left: 10px">
                     <input type="text" placeholder="Search for product..." th:field="*{description}" > 
                     <button type="submit" style="height: 35px; width: 100px; margin-top: 10px">
                         Submit</button>
