@@ -13,6 +13,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.util.StringUtils;
 
 /**
  * An implementation of the ProductDAO interface.
@@ -93,10 +94,11 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> list(String description) {
         System.out.println("ProductDAOImpl description:" + description);
-        String sql = "SELECT * FROM product";
-        if (description != null) {
+        String sql = "SELECT * FROM product ";
+        if (!StringUtils.isEmpty(description)) {
             sql += "where description = '" + cleanString(description) + "';";
         }
+        System.out.println("public List<Product> list sql:\n" + sql);
         List<Product> listProduct = jdbcTemplate.query(sql, new RowMapper<Product>() {
 
             @Override

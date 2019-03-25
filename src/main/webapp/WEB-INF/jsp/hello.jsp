@@ -1,6 +1,6 @@
 <%-- 
     Document   : hello.jsp
-    Created on : Mar 29, 2018, 01:24 AM
+    Created on : Mar 24, 2018, 01:24 AM
     Author     : tbatey
 
     Based on the Spring Authentication Turtorial by Priyadarshini Balachandran
@@ -15,7 +15,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <link href="<c:url value="css/app.css" />" rel="stylesheet"
               type="text/css">
@@ -25,10 +25,13 @@
         <div class="sidenav">
             <p style="font-size: x-large; color: maroon; padding-left: 10px">Filters</p>
             <div class="search-container">
-                <form action="productSearch" method="get" style="width: 150px; padding-left: 10px">
-                    <input type="text" placeholder="Search for product..." th:field="*{description}" > 
+                <form action="productSearch" method="post"
+                      style="width: 150px; padding-left: 10px">
+                    <input type="text" placeholder="Search for product..." 
+                           id="description" name="description" > 
                     <button type="submit" style="height: 35px; width: 100px; margin-top: 10px">
                         Submit</button>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
             </div>
         </div>
