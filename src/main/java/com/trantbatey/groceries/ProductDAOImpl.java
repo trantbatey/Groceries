@@ -38,27 +38,24 @@ public class ProductDAOImpl implements ProductDAO {
 
     private static char cleanChar(char aChar) {
 
+        // ' '
+        if (aChar == ' ') return ' ';
+        
         // 0 - 9
-        for (int i = 48; i < 58; ++i) {
-            if (aChar == i) {
-                return (char) i;
-            }
-        }
+        if (isBetween(aChar, '0', '9')) return aChar;
 
         // 'A' - 'Z'
-        for (int i = 65; i < 91; ++i) {
-            if (aChar == i) {
-                return (char) i;
-            }
-        }
+        if (isBetween(aChar, 'A', 'Z')) return aChar;
 
         // 'a' - 'z'
-        for (int i = 97; i < 123; ++i) {
-            if (aChar == i) {
-                return (char) i;
-            }
-        }
+        if (isBetween(aChar, 'a', 'z')) return aChar;
+        
+        // replace unknown chars with 'a'
         return 'a';
+    }
+    
+    public static boolean isBetween(char x, char lower, int upper) {
+      return lower <= x && x <= upper;
     }
 
     public ProductDAOImpl(DataSource dataSource) {
@@ -96,7 +93,7 @@ public class ProductDAOImpl implements ProductDAO {
         System.out.println("ProductDAOImpl description:" + description);
         String sql = "SELECT * FROM product ";
         if (!StringUtils.isEmpty(description)) {
-            sql += "where description = '" + cleanString(description) + "';";
+            sql += "where description like '%" + cleanString(description.toLowerCase()) + "%';";
         }
         System.out.println("public List<Product> list sql:\n" + sql);
         List<Product> listProduct = jdbcTemplate.query(sql, new RowMapper<Product>() {
