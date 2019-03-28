@@ -22,15 +22,7 @@ public class Product {
     private float cost;
 
     public Product() {
-        this.productID = 0;
-        this.description = "";
-        this.lastSold = null;
-        this.shelfLife = 0;
-        this.department = "";
-        this.price = 0.0f;
-        this.unit = "";
-        this.xFor = 0;
-        this.cost = 0.0f;
+        // TODO: Any needed initialization
     }
 
     public Product(int productID, String description, java.util.Date lastSold,

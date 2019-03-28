@@ -68,7 +68,7 @@ h3{
     font-size: x-large
 }
 
-input[type="text"], input[type="password"]  {
+input[type="text"], input[type="password"], input[type="number"]  {
     display: block;
     margin: 0;
     width: 100%;

@@ -8,8 +8,8 @@ package com.trantbatey.groceries;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -19,15 +19,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductSearchController {
     @GetMapping("/productSearch")
     public String searchForm(Model model) {
-        System.out.println("ProductSearchController productSearch.getDescription:");
-        model.addAttribute("productSearch", new ProductSearch());
-        return "productSearch";
+        ProductSearch productSearch = new ProductSearch();
+        System.out.println("ProductSearchController01 productSearch: " + productSearch);
+        model.addAttribute("productSearch", productSearch);
+        return "hello";
     }
 
-    @RequestMapping("/productSearch")
-    public String searchSubmit(@ModelAttribute ProductSearch productSearch) {
-        System.out.println("ProductSearchController productSearch.getDescription:" + productSearch.getDescription());
-        HomeController.setProductSearchString(productSearch.getDescription());
-        return "redirect:/hello";
+    @PostMapping("/productSearch")
+    public String searchSubmit(@RequestParam("description") String description,
+            @RequestParam("department") String department,
+            @RequestParam("maxPrice") String maxPrice,
+            @RequestParam("minPrice") String minPrice) {
+        System.out.println("ProductSearchController02 productSearch: " + description);
+        System.out.println("ProductSearchController02 productSearch.department: " + department);
+        System.out.println("ProductSearchController02 productSearch.maxPrice: " + maxPrice);
+        System.out.println("ProductSearchController02 productSearch.minPrice: " + minPrice);
+        HomeController.setSearchFilters(description, department, maxPrice, minPrice);
+        return "redirect:/hello?description="+description
+                +"&department="+department
+                +"&maxPrice="+maxPrice
+                +"&minPrice="+minPrice;
     }
 }

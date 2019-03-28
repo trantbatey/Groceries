@@ -13,6 +13,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.util.StringUtils;
 
 /**
  * An implementation of the ProductDAO interface.
@@ -37,27 +38,27 @@ public class ProductDAOImpl implements ProductDAO {
 
     private static char cleanChar(char aChar) {
 
+        // ' '
+        if (aChar == ' ') return ' ';
+
+        // decimal point
+        if (aChar == '.') return '.';
+        
         // 0 - 9
-        for (int i = 48; i < 58; ++i) {
-            if (aChar == i) {
-                return (char) i;
-            }
-        }
+        if (isBetween(aChar, '0', '9')) return aChar;
 
         // 'A' - 'Z'
-        for (int i = 65; i < 91; ++i) {
-            if (aChar == i) {
-                return (char) i;
-            }
-        }
+        if (isBetween(aChar, 'A', 'Z')) return aChar;
 
         // 'a' - 'z'
-        for (int i = 97; i < 123; ++i) {
-            if (aChar == i) {
-                return (char) i;
-            }
-        }
+        if (isBetween(aChar, 'a', 'z')) return aChar;
+        
+        // replace unknown chars with 'a'
         return 'a';
+    }
+    
+    public static boolean isBetween(char x, char lower, int upper) {
+      return lower <= x && x <= upper;
     }
 
     public ProductDAOImpl(DataSource dataSource) {
@@ -91,12 +92,36 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public List<Product> list(String description) {
+    public List<Product> list(
+            String description,
+            String department,
+            String maxPrice,
+            String minPrice) {
+        // set flags
+        boolean isDescription = !StringUtils.isEmpty(description);
+        boolean isDepartment = !StringUtils.isEmpty(department);
+        boolean isMax = !StringUtils.isEmpty(maxPrice);
+        boolean isMin = !StringUtils.isEmpty(minPrice);
         System.out.println("ProductDAOImpl description:" + description);
-        String sql = "SELECT * FROM product";
-        if (description != null) {
-            sql += "where description = '" + cleanString(description) + "';";
+        String sql = "SELECT * FROM product ";
+        if (isDescription || isDepartment || isMax || isMin) sql += " where";
+        if (isDescription) {
+            sql += " description like '%" + cleanString(description.toLowerCase()) + "%'";
         }
+        if (isDepartment) {
+            if (isDescription) sql += " and";
+            sql += " department like '%" + cleanString(department.toLowerCase()) + "%'";
+        }
+        if (isMax) {
+            if (isDescription || isDepartment) sql += " and";
+            sql += " price <= " + cleanString(maxPrice);
+        }
+        if (isMin) {
+            if (isDescription || isDepartment || isMax) sql += " and";
+            sql += " price >= " + cleanString(minPrice);
+        }
+        sql += ";";
+        System.out.println("public List<Product> list sql:\n" + sql);
         List<Product> listProduct = jdbcTemplate.query(sql, new RowMapper<Product>() {
 
             @Override

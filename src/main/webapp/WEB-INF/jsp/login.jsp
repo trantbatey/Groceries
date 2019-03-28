@@ -15,7 +15,7 @@
 		<h2>Merchandise Tracking System</h2>
 	</div>
 
-	<form action="/login" method="post">
+	<form action="login" method="post">
 
 		<div class="lc-block">
 			<div>

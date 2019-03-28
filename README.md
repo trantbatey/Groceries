@@ -5,6 +5,12 @@ Spring Boot Maven HEB Interview Project
 
 Developer II Programming Challenge www.heb.com/careers
 
+This project has a data directory with two files, ProductScheme.txt and UserScheme.txt. This files are to be used to create the databases needed for the sample application. The project uses a mysql database running on port 3306.
+
+The "UserScheme.txt" file will create two valid users. One will have full access to the site while the second will only be able to log in, but not be able to reach the merchndise management screen
+
+1st User: skubrick   password: HAL      Limited Permissions
+2nd User: tbatey     password: jungle   Full Access
 
 REQUIREMENTS: Create a simple spring framework with a UI, API, and database that 
 you can search for products. Given the following CSV file that contains 20 grocery 

@@ -24,11 +24,24 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class HomeController {
     
-    private static String productSearchString;
+    private static String description;
+    private static String department;
+    private static String maxPrice;
+    private static String minPrice;
     
-    public static void setProductSearchString(String searchString) {
-        productSearchString = searchString;
-        System.out.println("HomeController searchString :" + searchString);
+    public static void setSearchFilters(
+            String desc,
+            String dept,
+            String maxp,
+            String minp) {
+        description = desc;
+        department = dept;
+        maxPrice = maxp;
+        minPrice = minp;
+        System.out.println("HomeController.setSearchFilters description :" + desc);
+        System.out.println("HomeController.setSearchFilters department :" + dept);
+        System.out.println("HomeController.setSearchFilters maxPrice :" + maxp);
+        System.out.println("HomeController.setSearchFilters minPrice :" + minp);
     }
  
     @Bean
@@ -53,8 +66,9 @@ public class HomeController {
 
     public List<Product> listProduct() throws IOException {
         ProductDAO productDAO = getProductDAO();
-        System.out.println("HomeController productSearchString:" + productSearchString);
-        List<Product> productList = productDAO.list(productSearchString);
+        System.out.println("HomeController productSearchString:" + description);
+        List<Product> productList = 
+                productDAO.list(description, department, maxPrice, minPrice);
         return productList;
     }
 
