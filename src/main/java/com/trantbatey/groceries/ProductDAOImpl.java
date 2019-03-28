@@ -40,6 +40,9 @@ public class ProductDAOImpl implements ProductDAO {
 
         // ' '
         if (aChar == ' ') return ' ';
+
+        // decimal point
+        if (aChar == '.') return '.';
         
         // 0 - 9
         if (isBetween(aChar, '0', '9')) return aChar;
@@ -89,12 +92,35 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public List<Product> list(String description) {
+    public List<Product> list(
+            String description,
+            String department,
+            String maxPrice,
+            String minPrice) {
+        // set flags
+        boolean isDescription = !StringUtils.isEmpty(description);
+        boolean isDepartment = !StringUtils.isEmpty(department);
+        boolean isMax = !StringUtils.isEmpty(maxPrice);
+        boolean isMin = !StringUtils.isEmpty(minPrice);
         System.out.println("ProductDAOImpl description:" + description);
         String sql = "SELECT * FROM product ";
-        if (!StringUtils.isEmpty(description)) {
-            sql += "where description like '%" + cleanString(description.toLowerCase()) + "%';";
+        if (isDescription || isDepartment || isMax || isMin) sql += " where";
+        if (isDescription) {
+            sql += " description like '%" + cleanString(description.toLowerCase()) + "%'";
         }
+        if (isDepartment) {
+            if (isDescription) sql += " and";
+            sql += " department like '%" + cleanString(department.toLowerCase()) + "%'";
+        }
+        if (isMax) {
+            if (isDescription || isDepartment) sql += " and";
+            sql += " price <= " + cleanString(maxPrice);
+        }
+        if (isMin) {
+            if (isDescription || isDepartment || isMax) sql += " and";
+            sql += " price >= " + cleanString(minPrice);
+        }
+        sql += ";";
         System.out.println("public List<Product> list sql:\n" + sql);
         List<Product> listProduct = jdbcTemplate.query(sql, new RowMapper<Product>() {
 

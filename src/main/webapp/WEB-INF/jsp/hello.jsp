@@ -27,14 +27,45 @@
             <div class="search-container">
                 <form action="productSearch" method="post"
                       style="width: 150px; padding-left: 10px">
-                    <input type="text" placeholder="Search for product..." 
-                           id="description" name="description" > 
+                    <label for="description"><b>Description: </b></label>
+                    <input type="text" placeholder="Filter..." value=""
+                           id="description" name="description" style="font-size:12px"> 
+                    <br>
+                    <label for="department"><b>Department: </b></label>
+                    <input type="text" placeholder="Filter..." value=""
+                           id="department" name="department" style="font-size:12px"> 
+                    <br>
+                    <label for="maxPrice"><b>Max Price: </b></label>
+                    <input type="number" value="" min="0" step="0.01"
+                           id="maxPrice" name="maxPrice" style="font-size:12px"> 
+                    <br>
+                    <label for="minPrice"><b>Min Price: </b></label>
+                    <input type="number" value="" min="0" step="0.01"
+                           id="minPrice" name="minPrice" style="font-size:12px"> 
+                    <br>
                     <button type="submit" style="height: 35px; width: 100px; margin-top: 10px">
                         Submit</button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
             </div>
         </div>
+        <script>
+             var vars = [], hash;
+             var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+             for(var i = 0; i < hashes.length; i++)
+             {
+                 hash = hashes[i].split('=');
+                 vars[hash[0]] = hash[1];
+             }
+             if (vars['description']) {
+                 document.getElementById('description').value = vars['description'];
+             }
+             if (vars['department']) {
+                 document.getElementById('department').value = vars['department'];
+             }
+             document.getElementById('maxPrice').value = vars['maxPrice'];
+             document.getElementById('minPrice').value = vars['minPrice'];
+        </script>
         <jsp:include page="topBanner.jsp" />
 
         <div style="margin-bottom: 40px; padding-left: 150px">

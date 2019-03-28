@@ -20,5 +20,9 @@ public interface ProductDAO {
      
     public Product get(int productId);
      
-    public List<Product> list(String description);
+    public List<Product> list(
+            String description,
+            String department,
+            String maxPrice,
+            String minPrice);
 }
